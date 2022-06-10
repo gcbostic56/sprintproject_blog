@@ -18,7 +18,7 @@ public class MainController {
     public String login() {
         return "login";
     }
-
+  
     @Autowired
     private PostService postService;
 
