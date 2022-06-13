@@ -21,7 +21,7 @@ public class MainController {
     public String login() {
         return "login";
     }
-  
+
     @Autowired
     private PostService postService;
 
@@ -37,8 +37,15 @@ public class MainController {
     return "index";
     }
 
-    @GetMapping("/showNewPostForm")
-    public String showNewPostForm(Model model) {
+    @GetMapping("/post/{id}")
+    public String viewPost(@PathVariable(value = "id") long id, Model model) {
+        Post post = postService.getPostById(id);
+        model.addAttribute("post", post);
+        return "view_post";
+    }
+
+    @GetMapping("/createNewPost")
+    public String createNewPost(Model model) {
         Post post = new Post();
         model.addAttribute("post", post);
         return "new_post";
@@ -48,13 +55,21 @@ public class MainController {
     public String savePost(@ModelAttribute("post") Post post) {
         postService.savePost(post);
         return "redirect:/";
+        // change redirect to view created post's page
     }
 
-    @GetMapping("/showFormForUpdate/{id}")
+    @GetMapping("/edit/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
         Post post = postService.getPostById(id);
         model.addAttribute("post", post);
-        return "update_post";
+        return "edit_post";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String confirmDelete(@PathVariable(value = "id") long id, Model model) {
+        Post post = postService.getPostById(id);
+        model.addAttribute("post", post);
+        return "delete_post";
     }
 
     @GetMapping("/deletePost/{id}")
