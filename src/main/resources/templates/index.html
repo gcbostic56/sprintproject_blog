@@ -42,14 +42,40 @@
 
         <a th:href="@{/showNewPostForm}" class="btn btn-primary btn-sm mb-3">Add Post</a>
 
-        <div class="posts-container">
+    
+        <div class="posts-container"> 
             <div class="post" th:each="post : ${listPosts}">
                 <h2 th:text="${post.title}">Title</h2>
                 <p th:text="${post.body}">Blog Post Text</p>
                 <a th:href="@{/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
-            </div>
         </div>
+        </div>
+        
+        <!-- Start of Choua's Part -->
+        <main id="posts">
+            <article th:each="p : ${latest3posts}">
+              <h2 class="title" th:text="${p.title}">Post Title</h2>
+              <div class="date">
+                <i>Posted on</i>
+                <span th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}">22-May-2016</span>
+                <span th:if="${p.author}" th:remove="tag">
+                  <i>by</i>
+                  <span th:text="${p.author.fullName != null ?
+                                p.author.fullName : p.author.username}">Svetlin Nakov</span>
+                </span>
+              </div>
+              <p class="content" th:utext="${p.body}">Post content</p>
+            </article>
+        </main>
+    
+        <aside>
+            <h2>Recent Posts</h2>
+            <a  th:each="p : ${latest5posts}" th:text="${p.title}"></a>
+        </aside>
+
+
+
     </div>
 
 </body>
