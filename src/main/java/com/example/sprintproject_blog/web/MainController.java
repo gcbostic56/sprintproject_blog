@@ -3,6 +3,8 @@ package com.example.sprintproject_blog.web;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.example.sprintproject_blog.model.User;
+import com.example.sprintproject_blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,7 @@ public class MainController {
     @Autowired
     private PostService postService;
 
+
     @GetMapping("/")
     public String home(Model model) {
         List<Post> latest5Posts = postService.findLatest5();
@@ -33,6 +36,8 @@ public class MainController {
         List<Post> latest3Posts = latest5Posts.stream()
         .limit(3).collect(Collectors.toList());
         model.addAttribute("latest3posts", latest3Posts);
+
+
     
     return "index";
     }
@@ -49,6 +54,15 @@ public class MainController {
         Post post = new Post();
         model.addAttribute("post", post);
         return "new_post";
+    }
+
+    @Autowired
+    private UserService userService;
+    @GetMapping("/usersTable")
+    public String showUsersTable(Model model) {
+        List<User> allUsers = userService.getAllUsers();
+        model.addAttribute("allUsers", allUsers);
+        return "users_table";
     }
 
     @PostMapping("/savePost") 
@@ -77,5 +91,7 @@ public class MainController {
         this.postService.deletePostById(id);
         return "redirect:/";
     }
+
+
     
 }
