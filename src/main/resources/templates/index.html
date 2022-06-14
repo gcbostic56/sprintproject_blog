@@ -48,17 +48,44 @@
 
         <a th:href="@{/createNewPost}" class="btn btn-primary btn-sm mb-3">Create New Post</a>
 
-        <div class="posts-container">
+    
+        <div class="posts-container"> 
             <div class="post" th:each="post : ${listPosts}">
                 <a th:href="@{/post/{id}(id=${post.id})}">
                     <h2 th:text="${post.title}">Title</h2>
                 </a>
                 <p th:text="${post.getDate()}">Date</p>
                 <p th:text="${post.body}">Blog Post Text</p>
+                <a th:href="@{/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
                 <a th:href="@{/edit/{id}(id=${post.id})}" class="btn btn-warning">Edit</a>
                 <a th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
             </div>
         </div>
+        </div>
+        
+        <!-- Start of Choua's Part -->
+        <main id="posts">
+            <article th:each="p : ${latest3posts}">
+              <h2 class="title" th:text="${post.title}">Post Title</h2>
+              <div class="date">
+                <i>Posted on</i>
+                <span th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}"></span>
+                <!-- <span th:if="${p.author}" th:remove="tag">
+                  <i>by</i>
+                  <span th:text="${p.author.fullName != null ?
+                                p.author.fullName : p.author.username}"></span>
+                </span> -->
+              </div>
+              <p class="content" th:utext="${post.body}">Post content</p>
+            </article>
+        </main>
+    
+        <aside>
+            <h2>Recent Posts</h2>
+            <a  th:each="p : ${latest5posts}" th:text="${post.title}" th:text=“${post.title}” th:href=“@{/posts/view_post/{id}/(id=${post.id})}></a>
+        </aside>
+
     </div>
 
 </body>
