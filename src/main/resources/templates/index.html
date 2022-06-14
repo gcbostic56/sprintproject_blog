@@ -54,19 +54,19 @@
         <a th:href="@{/createNewPost}" class="btn btn-primary btn-sm mb-3">Create New Post</a>
 
 
-        <div class="posts-container">
-            <div class="post" th:each="post : ${listPosts}">
-                <a th:href="@{/post/{id}(id=${post.id})}">
-                    <h2 th:text="${post.title}">Title</h2>
-                </a>
-                <p th:text="${post.getDate()}">Date</p>
-                <p th:text="${post.body}">Blog Post Text</p>
-                <a th:href="@{/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
-                <a th:href="@{/edit/{id}(id=${post.id})}" class="btn btn-warning">Edit</a>
-                <a th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
-            </div>
-        </div>
+<!--        <div class="posts-container">-->
+<!--            <div class="post" th:each="post : ${listPosts}">-->
+<!--                <a th:href="@{/post/{id}(id=${post.id})}">-->
+<!--                    <h2 th:text="${post.title}">Title</h2>-->
+<!--                </a>-->
+<!--                <p th:text="${post.getDate()}">Date</p>-->
+<!--                <p th:text="${post.body}">Blog Post Text</p>-->
+<!--                <a th:href="@{/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-primary">Update</a>-->
+<!--                <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>-->
+<!--                <a th:href="@{/edit/{id}(id=${post.id})}" class="btn btn-warning">Edit</a>-->
+<!--                <a th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 
     <!-- Start of Choua's Part -->
