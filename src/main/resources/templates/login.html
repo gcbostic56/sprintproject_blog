@@ -10,9 +10,12 @@
 <body>
 
 <!-- create navigation bar ( header) -->
-<nav class="navbar">
+<header class="navbar">
     <div class="navbar-container">
         <div class="navbar-header">
+            <a class="navbar-brand" href="#" th:href="@{/}">
+                <img src="/images/cfhlogo.svg"/>
+            </a>
             <!-- <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
                     aria-controls="navbar">
@@ -20,12 +23,11 @@
                     class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button> -->
-            <a class="navbar-brand" href="#" th:href="@{/}">
-                <img src="/images/cfhlogo.svg"/>
-            </a>
         </div>
     </div>
-</nav>
+</header>
+
+
 
 <br>
 <br>
@@ -34,28 +36,28 @@
     <div class = "row">
         <div class = "login">
 
-            <h1> User Login Page </h1>
+            <h1> Log in </h1>
             <form th:action="@{/login}" method="post">
 
                 <!-- error message -->
                 <div th:if="${param.error}" class="error" >
-                    <div class="alert alert-danger">Invalid username or
+                    <div class="alert alert-error">Invalid username or
                         password.</div>
                 </div>
 
                 <!-- logout message -->
                 <div th:if="${param.logout}" class="logout">
-                    <div class="alert alert-info">You have been logged out.</div>
+                    <div class="alert alert-logout">You have been logged out.</div>
                 </div>
 
                 <div class = "form-group">
-                    <label for ="username"> Username </label> :
+                    <!-- <label for ="username"> Username </label> -->
                     <input type="text" class = "form-control" id ="username" name = "username"
-                           placeholder="Enter Email ID" autofocus="autofocus">
+                        placeholder="Enter Email ID" autofocus="autofocus">
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>:
+                    <!-- <label for="password">Password</label> -->
                     <input type="password" id="password" name="password" class="form-control"
                                                 placeholder="Enter Password" />
                 </div>
@@ -64,7 +66,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
                             <input type="submit" name="login-submit" id="login-submit"
-                                   class="form-control btn btn-primary" value="Log In" />
+                                class="form-control btn btn-primary" value="Log In" />
                         </div>
                     </div>
                 </div>

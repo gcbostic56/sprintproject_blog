@@ -1,28 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
 :root {
-    --rob400: 'Roboto', sans-serif;
+    --IBM400: 'IBM Plex Sans', sans-serif;
     --Maroon: rgba(58, 16, 39, 1);
     --Yellow: rgba(254, 191, 16, 1);
     --Orange: rgba(244, 122, 55, 1);
     --Magenta: rgba(217, 26, 95, 1);
-    --TransGrey: rgb(233, 233, 233);
+    --TransGrey: rgb(239, 239, 239);
 
 }
 
-* {
+body {
+    background-color: var(--TransGrey);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: var(--rob400);
+    font-family: var(--IBM400);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.5em;
+    text-rendering: optimizeLegibility;
 }
 
 .navbar {
+    /* position: absolute; */
+    width: 100%;
+    /* z-index: 2; */
     background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 5.5em;
+    box-sizing: border-box;
+    display: block;
+    padding: 30px 50px;
+    /* height: 5.5em; */
 }
 
 .navbar-header {
@@ -31,8 +39,34 @@
     justify-content: space-between;
 }
 
-.navbar-brand {
+
+
+.navbar-brand, .nav-navbar-nav{
     text-decoration: none;
+    list-style: none;
+}
+
+.nav-navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    min-width: 250px;
+    align-items: center;
+}
+
+.logout-btn {
+    border: none;
+    background: var(--Maroon);
+    color: white;
+    text-align: center;
+    padding: 14px;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.25s;
+}
+
+.logout-btn:hover {
+    background: var(--Magenta);
+    cursor: pointer;
 }
 
 .row {
@@ -43,11 +77,13 @@
 
 .login {
     padding: 1.2rem;
-    border: 4px solid #0000;
-    border-radius:26px;
+    /* border: 4px solid #0000; */
+    border-radius: 5px;
     background:
-      linear-gradient(var(--TransGrey), var(--TransGrey)) padding-box,
+      linear-gradient(white, white) padding-box,
       linear-gradient(var(--Maroon), var(--Magenta)) border-box;
+    width: 500px;
+    filter: drop-shadow(0 0 1rem rgba(57, 57, 57, 0.4));
     /* border-image: 
         linear-gradient(
             to bottom,
@@ -58,27 +94,76 @@
     /* align-items: center; */
 }
 
-.form-group {
-    padding: 10px 65px;
+.login input[type = "text"],.login input[type = "password"],
+#firstName, #lastName, #email {
+    border:2px solid var(--Magenta);
+    border-radius: 5px;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: var(--Magenta);
+    background: none;
+    display: block;
+    margin: 20px auto;
+    transition: 0.25s;
 }
 
-.logout, .error {
-    display: flex;
-    justify-content: center;
+.login label {
+    overflow: hidden;
+    left: -99999px;
+    position: absolute;
+}
+
+.login input[type = "text"]:focus,.login input[type = "password"]:focus,
+#firstName:focus, #lastName:focus, #email:focus {
+    width: 280px;
+    border-color: var(--Yellow);
+}
+
+.login input[type = "submit"],
+.login button[type = "submit"] {
+    border: none;
+    background: var(--Maroon);
+    color: white;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 40px;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.25s;
+}
+
+.login input[type = "submit"]:hover,
+.login button[type = "submit"]:hover {
+    background: var(--Magenta);
+    cursor: pointer;
+}
+
+.login span {
+    display: block;
+    text-align: center;
+}
+
+.login a {
+    color: var(--Magenta);
+}
+
+.form-group {
+    padding: 0px 65px;
+    display: block;
+}
+
+.logout, .error, .alert-info {
+    display: block;
+    text-align: center;
     padding: .6rem;
-    border-style: solid;
-    border-radius: 15px;
-    border-width: .5px;
+    border: none;
+    border-radius: 5px;
     /* border-color: ; */
     margin: 15px 0px;
-}
-
-.logout {
-    background-color: aqua;
-}
-
-.error {
-    background-color: aquamarine;
+    background: var(--Magenta);
+    color: white;
 }
 
 h1 {
