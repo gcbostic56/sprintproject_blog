@@ -1,5 +1,10 @@
 package com.example.sprintproject_blog.web;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.example.sprintproject_blog.model.User;
+import com.example.sprintproject_blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +27,19 @@ public class MainController {
     @Autowired
     private PostService postService;
 
+
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("listPosts", postService.getAllPosts());
-        return "index";
+        List<Post> latest5Posts = postService.findLatest5();
+        model.addAttribute("latest5posts", latest5Posts);
+
+        List<Post> latest3Posts = latest5Posts.stream()
+        .limit(3).collect(Collectors.toList());
+        model.addAttribute("latest3posts", latest3Posts);
+
+
+    
+    return "index";
     }
 
     @GetMapping("/post/{id}")
@@ -42,7 +56,16 @@ public class MainController {
         return "new_post";
     }
 
-    @PostMapping("/savePost")
+    @Autowired
+    private UserService userService;
+    @GetMapping("/usersTable")
+    public String showUsersTable(Model model) {
+        List<User> allUsers = userService.getAllUsers();
+        model.addAttribute("allUsers", allUsers);
+        return "users_table";
+    }
+
+    @PostMapping("/savePost") 
     public String savePost(@ModelAttribute("post") Post post) {
         postService.savePost(post);
         return "redirect:/";
@@ -68,4 +91,7 @@ public class MainController {
         this.postService.deletePostById(id);
         return "redirect:/";
     }
+
+
+    
 }

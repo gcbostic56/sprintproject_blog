@@ -12,4 +12,6 @@ public interface PostService {
     Post getPostById(long id);
 
     void deletePostById(long id);
+
+    List<Post> findLatest5();
 }
