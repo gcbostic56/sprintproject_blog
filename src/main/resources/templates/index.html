@@ -47,6 +47,9 @@
     <div class="blog-container">
         <h1>Blog</h1>
 
+        <div th:if="${param.success}">
+            <h3>Login Successful. Welcome!</h3>
+        </div>
 
         <a th:href="@{/createNewPost}" class="btn btn-primary btn-sm mb-3">Create New Post</a>
 

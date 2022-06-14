@@ -1,6 +1,8 @@
 package com.example.sprintproject_blog.model;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.JoinColumn;
@@ -42,6 +45,9 @@ public class User {
                     name = "role_id", referencedColumnName = "id"))
 
     private Collection<Role> roles;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Post> posts = new HashSet<>();
 
     public User() {
 
@@ -94,6 +100,12 @@ public class User {
 
     public String getFullName() {
         return this.firstName + " " + this.lastName;
+    }
+
+    public String greeting() {
+        String[] greetings = {"Hello", "Greetings", "Welcome", "Howdy"};
+        int index = (int)Math.floor(Math.random() * greetings.length);
+        return greetings[index] + ", " + this.getFirstName() + "!";
     }
 
 }
