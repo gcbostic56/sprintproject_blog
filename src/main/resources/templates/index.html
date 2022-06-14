@@ -23,11 +23,14 @@
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/registration}">Register</a>
                     </li>
-                    <li class="logout-btn" sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">Logout</a>
+                    <li>
+                        <a th:href="@{/createNewPost}" class="btn btn-primary btn-sm mb-3">Create New Post</a>
                     </li>
                     <li class ="users-btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{usersTable}">Users</a>
+                    </li>
+                    <li class="logout-btn" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/logout}">Logout</a>
                     </li>
                 </ul>
                 <!-- <button type="button" class="navbar-toggle collapsed"
@@ -50,8 +53,6 @@
         <div th:if="${param.success}">
             <h3>Login Successful. Welcome!</h3>
         </div>
-
-        <a th:href="@{/createNewPost}" class="btn btn-primary btn-sm mb-3">Create New Post</a>
 
 
 <!--        <div class="posts-container">-->
