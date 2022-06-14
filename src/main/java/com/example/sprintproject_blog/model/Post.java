@@ -1,5 +1,6 @@
 package com.example.sprintproject_blog.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -15,7 +16,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name = "post")
+@Table(name = "post_table")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,5 +74,16 @@ public class Post {
 
     public String getBody() {
         return this.body;
+    }
+    
+    public String getDate() {
+        int edited = createDateTime.compareTo(editDateTime);
+        SimpleDateFormat dt = new SimpleDateFormat();
+
+        if (edited == 0) {
+            return dt.format(createDateTime);
+        } else {
+            return dt.format(createDateTime) + ", edited " + dt.format(editDateTime);
+        }
     }
 }

@@ -16,6 +16,7 @@
             <h2 th:text="${post.title}">Title</h2>
             <p th:text="${post.createDateTime}">Create DT</p>
             <p th:text="${post.editDateTime}">Edit DT</p>
+            <p th:text="${post.getDate()}"></p>
             <p th:text="${post.body}">Blog Post Text</p>
             <a th:href="@{/edit/{id}(id=${post.id})}" class="btn btn-warning">Edit</a>
             <a th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
