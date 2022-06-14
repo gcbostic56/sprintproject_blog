@@ -83,7 +83,7 @@
     
         <aside>
             <h2>Recent Posts</h2>
-            <a  th:each="p : ${latest5posts}" th:text="${post.title}" th:text=“${post.title}” th:href=“@{/posts/view_post/{id}/(id=${post.id})}></a>
+            <a  th:each="p : ${latest5posts}" th:text="${post.title}" th:text=“${post.title}” ></a>
         </aside>
 
     </div>
