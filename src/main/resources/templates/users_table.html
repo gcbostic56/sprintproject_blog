@@ -11,11 +11,11 @@
     <th>Username</th>
     <th>Full Name</th>
     </tr>
-    <tr class="userTable" th:each="user : ${}">
-        <td></td>
-        <td></td>
+    <tr class="userTable" th:each="user : ${allUsers}">
+        <td th:text="${user.getEmail()}"></td>
+        <td th:text="${user.getFullName()}"></td>
     </tr>
-    <div class="post" th:each="post : ${listPosts}">
+
 </table>
 
 </body>

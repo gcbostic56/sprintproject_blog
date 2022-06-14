@@ -17,11 +17,17 @@
                     <img src="/images/cfhlogo.svg" />
                 </a>
                 <ul class="nav-navbar-nav">
-                    <li>
-                        <!--                        Welcome, <span sec:authentication="principal.username">User</span>-->
+                    <li class="login-btn" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="register-btn" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/registration}">Register</a>
                     </li>
                     <li class="logout-btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{/logout}">Logout</a>
+                    </li>
+                    <li class ="users-btn" sec:authorize="isAuthenticated()">
+                        <a th:href="@{usersTable}">Users</a>
                     </li>
                 </ul>
                 <!-- <button type="button" class="navbar-toggle collapsed"
