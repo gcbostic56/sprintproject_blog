@@ -44,7 +44,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findLatest5() {
         return postRepository.findAll().stream()
-        .sorted((a, b) -> b.getDate().compareTo(a.getDate()))
+        .sorted((a, b) -> b.getCreateDateTime().compareTo(a.getCreateDateTime()))
         .limit(5)
         .collect(Collectors.toList());
     }
