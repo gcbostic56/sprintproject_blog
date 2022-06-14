@@ -51,6 +51,11 @@ public class MainController {
         return "new_post";
     }
 
+    @GetMapping("/usersTable")
+    public String showUsersTable() {
+        return "users_table";
+    }
+
     @PostMapping("/savePost") 
     public String savePost(@ModelAttribute("post") Post post) {
         postService.savePost(post);
