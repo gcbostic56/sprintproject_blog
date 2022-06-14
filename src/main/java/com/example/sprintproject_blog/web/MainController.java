@@ -37,7 +37,7 @@ public class MainController {
         .limit(3).collect(Collectors.toList());
         model.addAttribute("latest3posts", latest3Posts);
 
-
+        model.addAttribute("listPosts", postService.getAllPosts());
     
     return "index";
     }
@@ -92,6 +92,4 @@ public class MainController {
         return "redirect:/";
     }
 
-
-    
 }
