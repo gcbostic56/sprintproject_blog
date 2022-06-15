@@ -16,11 +16,13 @@
 
         <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
             <input type="text" th:field="*{title}" placeholder="Post Title" required aria-label="post title input">
-            <textarea style="height: 100px; width: 100px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <br>
+            <textarea style="height: 300px; width: 780px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <br>
             <button type="submit">Save Post</button>
         </form>
     </div>
 
-    <footer calss=" footer" th:fragment="footer"></footer>
+    <div th:insert="footer :: footer"></div>
 </body>
 </html>
