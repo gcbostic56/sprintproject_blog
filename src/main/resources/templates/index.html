@@ -52,8 +52,11 @@
 
         <div th:if="${param.success}">
             <h3>Login Successful. Welcome!</h3>
+<!--            <p th:text="${post.user.firstName + ' ' + post.user.lastName + ' (' + post.user.email + ')'}"></p>-->
         </div>
     </div>
+
+
 
     <main id="posts">
         <article th:each="post : ${listPosts}">

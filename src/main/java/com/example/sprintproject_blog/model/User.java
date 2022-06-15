@@ -83,6 +83,13 @@ public class User {
         this.password = password;
     }
 
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
 
     public String getFullName() {
         return this.firstName + " " + this.lastName;
