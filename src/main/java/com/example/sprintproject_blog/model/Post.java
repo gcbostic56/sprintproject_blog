@@ -28,10 +28,10 @@ public class Post {
 
     private String title;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @Column(columnDefinition = "TEXT")
     private String body;
 
     public Post() {}
@@ -74,7 +74,23 @@ public class Post {
     public String getBody() {
         return this.body;
     }
-    
+
+    public void setCreateDateTime(Date createDateTime) {
+        this.createDateTime = createDateTime;
+    }
+
+    public void setEditDateTime(Date editDateTime) {
+        this.editDateTime = editDateTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getDate() {
         int edited = createDateTime.compareTo(editDateTime);
         SimpleDateFormat dt = new SimpleDateFormat();
