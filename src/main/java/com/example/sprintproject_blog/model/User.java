@@ -36,15 +36,7 @@ public class User {
 
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
 
-    private Collection<Role> roles;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private Set<Post> posts = new HashSet<>();
@@ -53,13 +45,12 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public User(String firstName, String lastName, String email, String password) {
         super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        this.roles = roles;
     }
     public Long getId() {
         return id;
@@ -91,12 +82,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-    public Collection<Role> getRoles() {
-        return roles;
-    }
-    public void setRoles(Collection<Role> roles) {
-        this.roles = roles;
-    }
+
 
     public String getFullName() {
         return this.firstName + " " + this.lastName;
