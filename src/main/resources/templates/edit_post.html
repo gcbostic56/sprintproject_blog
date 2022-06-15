@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CFH Blog</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+   
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 
 </head>
 <body>
+    <header th:insert="index :: header" class="navbar" ></header>
 
-    <header class="navbar">
+    <!-- <header class="navbar">
         <div class="navbar-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#" th:href="@{/}">
-                    <img src="/images/cfhlogo.svg"/>
+                    <img src="../static/images/cfhlogo.svg"/>
                 </a>
                 <ul class="nav-navbar-nav">
                     <li>
@@ -25,7 +25,7 @@
                     <li class="logout-btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{/logout}">Logout</a>
                     </li>
-                </ul>
+                </ul> -->
                 <!-- <button type="button" class="navbar-toggle collapsed"
                         data-toggle="collapse" data-target="#navbar" aria-expanded="false"
                         aria-controls="navbar">
@@ -33,9 +33,9 @@
                         class="icon-bar"></span> <span class="icon-bar"></span> <span
                         class="icon-bar"></span>
                 </button> -->
-            </div>
+            <!-- </div>
         </div>
-    </header>
+    </header> -->
 
 <br>
 <br>
@@ -46,13 +46,16 @@
         <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
             <input type="hidden" th:field="*{id}">
             <input type="text" th:field="*{title}" required aria-label="title">
-            <input type="text" th:field="*{body}" required aria-label="body">
+            <br>
+            <textarea style="height: 300px; width: 780px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <br>
+            <!-- <input type="text" th:field="*{body}" required aria-label="body"> -->
             <button type="submit" class="btn btn-info col-2">Save Post</button>
         </form>
     </div>
 
 
     
-    <footer calss=" footer" th:fragment="footer"></footer>
+    <footer class=" footer" th:fragment="footer"></footer>
 </body>
 </html>
