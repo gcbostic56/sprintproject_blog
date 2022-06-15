@@ -16,9 +16,7 @@
 
         <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
             <input type="text" th:field="*{title}" placeholder="Post Title" required aria-label="post title input">
-            <br>
-            <textarea style="height: 270px; width: 580px" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
-            <br>
+            <textarea style="height: 100px; width: 100px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
             <button type="submit">Save Post</button>
         </form>
     </div>
