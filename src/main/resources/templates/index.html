@@ -4,17 +4,17 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Registration and Login App</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
 
 </head>
 
 <body>
     <!-- create navigation bar ( header) -->
-    <header class="navbar" th:fragment="navbar">
+    <header class="navbar" th:fragment="header">
         <div class="navbar-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#" th:href="@{/}">
-                    <img src="../static/images/cfhlogo.svg" />
+                    <img src="/images/cfhlogo.svg" />
                 </a>
                 <ul class="nav-navbar-nav">
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
@@ -92,6 +92,7 @@
     </aside>
 
     </div>
+    <div th:insert="footer :: footer"></div>
 
 </body>
 
