@@ -2,6 +2,8 @@ package com.example.sprintproject_blog.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.example.sprintproject_blog.model.Post;
 
 public interface PostService {
@@ -14,4 +16,6 @@ public interface PostService {
     void deletePostById(long id);
 
     List<Post> findLatest5();
+
+    Page<Post> findPaginated(int pageNo, int pageSize);
 }

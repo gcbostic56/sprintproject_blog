@@ -15,11 +15,17 @@
         <h2>Create New Post</h2>
 
         <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
+<<<<<<< HEAD
             <input type="text" th:field="*{title}" placeholder="Post Title" class="form-control mb-4 col-4" aria-label="post title input">
             <textarea th:field="*{body}" style="height: 294px;width: 941px;"  ></textarea>
             <!-- <input type="text" th:field="*{body}" placeholder="Body Text" class="form-control mb-4 col-4" aria-label="post body input"> -->
             <br>
             <button type="submit" class="btn btn-primary col-2">Save Post</button>
+=======
+            <input type="text" th:field="*{title}" placeholder="Post Title" required aria-label="post title input">
+            <input type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input">
+            <button type="submit">Save Post</button>
+>>>>>>> a897489ce06cc8453e6fdfdb038e78b7de3a5b5f
         </form>
     </div>
 </body>

@@ -5,6 +5,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.sprintproject_blog.model.Post;
@@ -44,9 +47,15 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Post> findLatest5() {
         return postRepository.findAll().stream()
-        .sorted((a, b) -> b.getDate().compareTo(a.getDate()))
+        .sorted((a, b) -> b.getCreateDateTime().compareTo(a.getCreateDateTime()))
         .limit(5)
         .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<Post> findPaginated(int pageNo, int pageSize) {
+        Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return this.postRepository.findAll(pageable);
     }
 
 }
