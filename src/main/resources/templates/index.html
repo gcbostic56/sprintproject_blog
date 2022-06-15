@@ -27,7 +27,7 @@
                         <a th:href="@{/createNewPost}">Create New Post</a>
                     </li>
                     <li class="users-btn" sec:authorize="isAuthenticated()">
-                        <a th:href="@{usersTable}">Users</a>
+                        <a th:href="@{/usersTable}">Users</a>
                     </li>
                     <li class="logout-btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{/logout}">Logout</a>
