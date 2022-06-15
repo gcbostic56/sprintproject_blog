@@ -9,19 +9,17 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-    <!-- create navigation bar ( header) -->
-    <header class="navbar" th:fragment="header">
-=======
 
     <header class="navbar">
->>>>>>> a897489ce06cc8453e6fdfdb038e78b7de3a5b5f
         <div class="navbar-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#" th:href="@{/}">
                     <img src="/images/cfhlogo.svg" />
                 </a>
                 <ul class="nav-navbar-nav">
+                    <li class="login-btn" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/login}">Login</a>
+                    </li>
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/registration}">Register</a>
                     </li>
@@ -62,18 +60,6 @@
             <a th:href="@{/post/{id}(id=${post.id})}">
                 <h2 class="title" th:text="${post.title}">Post Title</h2>
             </a>
-<<<<<<< HEAD
-            <div class="date">
-                <i>Posted on</i>
-                <span th:text="${post.getDate()}"></span>
-                <!-- <span th:if="${p.author}" th:remove="tag">
-                <i>by</i>
-                <span th:text="${p.author.fullName != null ?
-                                p.author.fullName : p.author.username}"></span>
-                </span> -->
-            </div>
-           <pre><p class="content" th:text="${post.body}">Post content</p></pre>
-=======
             <p class="date-auth">
                 <i>Posted on </i><span th:text="${post.getDate()}"></span>
                 <br>
@@ -82,7 +68,6 @@
             <p class="content" th:text="${post.body}">Post content</p>
             <a sec:authorize="isAuthenticated()" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
             <a sec:authorize="isAuthenticated()" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
->>>>>>> a897489ce06cc8453e6fdfdb038e78b7de3a5b5f
         </article>
         <div class="pageNav">
             <ul>
@@ -124,7 +109,7 @@
 
 
 
-
+    <footer calss=" footer" th:fragment="footer"></footer>
 </body>
 
 </html>
