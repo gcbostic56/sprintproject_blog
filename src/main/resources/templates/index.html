@@ -4,7 +4,7 @@
 <head>
     <meta charset="ISO-8859-1">
     <title>Registration and Login App</title>
-    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" />
 
 </head>
 
@@ -14,20 +14,20 @@
         <div class="navbar-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#" th:href="@{/}">
-                    <img src="/images/cfhlogo.svg" />
+                    <img src="../static/images/cfhlogo.svg" />
                 </a>
                 <ul class="nav-navbar-nav">
-                    <li class="login-btn" sec:authorize="!isAuthenticated()">
-                        <a th:href="@{/login}">Login</a>
-                    </li>
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/registration}">Register</a>
                     </li>
-                    <li class="logout-btn" sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">Logout</a>
+                    <li class="login-btn" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/login}">Login</a>
                     </li>
                     <li class ="users-btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{usersTable}">Users</a>
+                    </li>
+                    <li class="logout-btn" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/logout}">Logout</a>
                     </li>
                 </ul>
                 <!-- <button type="button" class="navbar-toggle collapsed"
