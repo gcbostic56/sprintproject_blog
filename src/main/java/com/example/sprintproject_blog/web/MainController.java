@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.example.sprintproject_blog.model.User;
+import com.example.sprintproject_blog.repository.UserRepository;
 import com.example.sprintproject_blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +31,8 @@ public class MainController {
     @Autowired
     private PostService postService;
 
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -68,6 +73,7 @@ public class MainController {
         return "new_post";
     }
 
+
     @Autowired
     private UserService userService;
     @GetMapping("/usersTable")
@@ -79,6 +85,10 @@ public class MainController {
 
     @PostMapping("/savePost") 
     public String savePost(@ModelAttribute("post") Post post) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        var details = (UserDetails) principal;
+        User user = userRepository.findByEmail(details.getUsername());
+        post.setUser(user);
         postService.savePost(post);
         return "redirect:/";
         // change redirect to view created post's page
