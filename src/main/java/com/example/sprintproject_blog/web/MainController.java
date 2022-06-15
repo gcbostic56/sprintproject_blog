@@ -31,8 +31,8 @@ public class MainController {
 
     @GetMapping("/")
     public String home(Model model) {
-        // List<Post> latest5Posts = postService.findLatest5();
-        // model.addAttribute("latest5posts", latest5Posts);
+        List<Post> latest5Posts = postService.findLatest5();
+        model.addAttribute("latest5posts", latest5Posts);
 
         // model.addAttribute("listPosts", postService.getAllPosts());
     
@@ -42,12 +42,15 @@ public class MainController {
     @GetMapping("/page/{pageNo}")
     public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
         int pageSize = 3;
-        Page<Post> page = postService.findPaginated(pageNo, pageSize);
+        Page<Post> page = postService.findPaginated(pageNo, pageSize, "createDateTime", "desc");
         List<Post> listPosts = page.getContent();
 
         model.addAttribute("currentPage", pageNo);
         model.addAttribute("totalPages", page.getTotalPages());
         model.addAttribute("listPosts", listPosts);
+
+        List<Post> latest5Posts = postService.findLatest5();
+        model.addAttribute("latest5posts", latest5Posts);
         return "index";
     }
 

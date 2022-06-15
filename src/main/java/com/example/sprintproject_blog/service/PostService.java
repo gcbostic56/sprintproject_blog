@@ -17,5 +17,5 @@ public interface PostService {
 
     List<Post> findLatest5();
 
-    Page<Post> findPaginated(int pageNo, int pageSize);
+    Page<Post> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection);
 }

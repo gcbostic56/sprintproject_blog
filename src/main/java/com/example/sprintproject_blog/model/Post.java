@@ -28,7 +28,6 @@ public class Post {
 
     private String title;
 
-
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
