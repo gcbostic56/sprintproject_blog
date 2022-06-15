@@ -215,3 +215,35 @@ body>aside {
     display: block;
     clear: both;
   }
+
+
+  /* Footer */
+
+  .footer {
+    padding: 80px 50px 30px 50px;
+    border-top: 1px solid #D8D8D8;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .footer p {
+    text-align: center;
+  }
+
+  .socials-container {
+    position: relative;
+    justify-content: center;
+  }
+
+  .socials {
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    text-decoration: none;
+    padding: 0px;
+  }
