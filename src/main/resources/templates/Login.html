@@ -4,7 +4,7 @@
     <meta charset="ISO-8859-1">
     <title>Registration and Login App</title>
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css"/>
 
 </head>
 <body>
@@ -14,7 +14,7 @@
     <div class="navbar-container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#" th:href="@{/}">
-                <img src="/images/cfhlogo.svg"/>
+                <img src="../static/images/cfhlogo.svg"/>
             </a>
             <!-- <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -80,7 +80,7 @@
 </div>
 
 
-<footer calss=" footer" th:fragment="footer"></footer>
+<div th:insert="footer :: footer"></div>
 
 </body>
 </html>

@@ -5,22 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Post</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+  
+        <link rel="stylesheet" type="text/css" href="/css/main.css" />
 </head>
 <body>
+    <header th:insert="index :: header" class="navbar" ></header>
+
     <div class="container">
         <h1>CFH Blog</h1>
         <h2>Create New Post</h2>
 
         <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
             <input type="text" th:field="*{title}" placeholder="Post Title" required aria-label="post title input">
-            <textarea style="height: 100px; width: 100px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <br>
+            <textarea style="height: 300px; width: 780px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <br>
             <button type="submit">Save Post</button>
         </form>
     </div>
 
-    <footer calss=" footer" th:fragment="footer"></footer>
+    <br>
+    <br>
+
+    <div th:insert="footer :: footer"></div>
 </body>
 </html>
