@@ -52,7 +52,7 @@
 
         <div th:if="${param.success}">
             <h3>Login Successful. Welcome!</h3>
-<!--            <p th:text="${post.user.firstName + ' ' + post.user.lastName + ' (' + post.user.email + ')'}"></p>-->
+
         </div>
     </div>
 
@@ -65,8 +65,9 @@
             </a>
             <p class="date-auth">
                 <i>Posted on </i><span th:text="${post.getDate()}"></span>
+            <p th:text="${post.user.firstName + ' ' + post.user.lastName + ' (' + post.user.email + ')'}"></p>
                 <br>
-                <!-- <i>By </i><span th:text="${post.user.getFullName()}"></span> -->
+
             </p>
             <pre><p class="content" th:text="${post.body}">Post content</p></pre>
             <a sec:authorize="isAuthenticated()" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
