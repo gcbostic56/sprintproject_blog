@@ -10,7 +10,6 @@
 
 <body>
 
-    <!-- create navigation bar ( header) -->
     <header class="navbar">
         <div class="navbar-container">
             <div class="navbar-header">
@@ -24,10 +23,10 @@
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/registration}">Register</a>
                     </li>
-                    <li>
-                        <a th:href="@{/createNewPost}" class="btn btn-primary btn-sm mb-3" sec:authorize="isAuthenticated()">Create New Post</a>
+                    <li class="create-post-btn" sec:authorize="isAuthenticated()">
+                        <a th:href="@{/createNewPost}">Create New Post</a>
                     </li>
-                    <li class ="users-btn" sec:authorize="isAuthenticated()">
+                    <li class="users-btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{usersTable}">Users</a>
                     </li>
                     <li class="logout-btn" sec:authorize="isAuthenticated()">
@@ -49,52 +48,60 @@
     <br>
 
     <div class="blog-container">
-        <h1>Blog</h1>
+        <h1>CFH Blog</h1>
 
         <div th:if="${param.success}">
             <h3>Login Successful. Welcome!</h3>
         </div>
-
-
-<!--        <div class="posts-container">-->
-<!--            <div class="post" th:each="post : ${listPosts}">-->
-<!--                <a th:href="@{/post/{id}(id=${post.id})}">-->
-<!--                    <h2 th:text="${post.title}">Title</h2>-->
-<!--                </a>-->
-<!--                <p th:text="${post.getDate()}">Date</p>-->
-<!--                <p th:text="${post.body}">Blog Post Text</p>-->
-<!--                <a th:href="@{/showFormForUpdate/{id}(id=${post.id})}" class="btn btn-primary">Update</a>-->
-<!--                <a th:href="@{/deletePost/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>-->
-<!--                <a th:href="@{/edit/{id}(id=${post.id})}" class="btn btn-warning">Edit</a>-->
-<!--                <a th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>-->
-<!--            </div>-->
-<!--        </div>-->
     </div>
 
-    <!-- Start of Choua's Part -->
     <main id="posts">
-        <article th:each="post : ${latest3posts}">
+        <article th:each="post : ${listPosts}">
             <a th:href="@{/post/{id}(id=${post.id})}">
                 <h2 class="title" th:text="${post.title}">Post Title</h2>
             </a>
-            <div class="date">
-                <i>Posted on</i>
-                <span th:text="${post.getDate()}"></span>
-                <!-- <span th:if="${p.author}" th:remove="tag">
-                <i>by</i>
-                <span th:text="${p.author.fullName != null ?
-                                p.author.fullName : p.author.username}"></span>
-                </span> -->
-            </div>
+            <p class="date-auth">
+                <i>Posted on </i><span th:text="${post.getDate()}"></span>
+                <br>
+                <!-- <i>By </i><span th:text="${post.user.getFullName()}"></span> -->
+            </p>
             <p class="content" th:text="${post.body}">Post content</p>
-            <a sec:authorize="isAuthenticated()" th:href="@{/edit/{id}(id=${post.id})}" class="btn btn-warning">Edit</a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
         </article>
+        <div class="pageNav">
+            <ul>
+                <li>
+                    <a th:if="${currentPage > 1}" th:href="@{/page/1}">First</a>
+                    <span th:unless="${currentPage > 1}">First</span>
+                </li>
+                <li>
+                    <a th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1}}">Previous</a>
+                    <span th:unless="${currentPage > 1}">Previous</span>
+                </li>
+                <li>
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}"
+                            th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+                </li>
+                <li>
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                    <span th:unless="${currentPage < totalPages}">Next</span>
+                </li>
+                <li>
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
+                    <span th:unless=" ${currentPage < totalPages}">Last</span>
+                </li>
+            </ul>
+        </div>
     </main>
 
     <aside>
         <h2>Recent Posts</h2>
-        <a th:each="post : ${latest5posts}" th:text="${post.title}" th:href="@{/post/{id}(id=${post.id})}"></a>
+        <!-- might be easier to style as a list? -->
+        <a th:each="post : ${latest5posts}" th:text="${post.title}" th:href="@{/post/{id}(id=${post.id})}">Post Link</a>
     </aside>
 
     </div>

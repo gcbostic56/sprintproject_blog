@@ -15,8 +15,8 @@
         <h2>Edit Post</h2>
         <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
             <input type="hidden" th:field="*{id}">
-            <input type="text" th:field="*{title}" class="form-control mb-4 col-4" aria-label="title">
-            <input type="text" th:field="*{body}" class="form-control mb-4 col-4" aria-label="body">
+            <input type="text" th:field="*{title}" required aria-label="title">
+            <input type="text" th:field="*{body}" required aria-label="body">
             <button type="submit" class="btn btn-info col-2">Save Post</button>
         </form>
     </div>
