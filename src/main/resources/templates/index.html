@@ -71,8 +71,8 @@
 
             </p>
             <pre><p class="content" th:text="${post.body}">Post content</p></pre>
-            <a sec:authorize="isAuthenticated()" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
+            <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
+            <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
         </article>
         <div class="pageNav">
             <ul>
