@@ -259,6 +259,7 @@ body>aside {
   }
 
   /* UserTable Container */
+.deletepost-container,
 .editpost-container,
 .newpost-container,
 .user_container_table{
