@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
     <title>Registration</title>
@@ -41,6 +41,10 @@
                 <div class="alert-info">You've successfully registered
                     to our awesome app!</div>
             </div>
+
+<!--            <div th:if="${param.error}">-->
+<!--                <div class="alert-info">That email address already has an account. Try again.</div>-->
+<!--            </div>-->
 
             <h1>Registration</h1>
 

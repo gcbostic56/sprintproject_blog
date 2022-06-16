@@ -5,22 +5,23 @@
     <meta charset="ISO-8859-1">
     <title>Registration and Login App</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
-    <link rel="icon" type="image/x-icon" href="/images/CFH_favicon.ico">
 
 </head>
 
 <body>
 
-    <header class="navbar" th:fragment="header">
+    <header class="navbar">
         <div class="navbar-container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#" th:href="@{/}">
                     <img src="/images/cfhlogo.svg" />
                 </a>
                 <ul class="nav-navbar-nav">
+
                     <li class="create-post-btn" sec:authorize="isAuthenticated()">
                         <a th:href="@{/createNewPost}">New Post</a>
                     </li>
+
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/registration}">Register</a>
                     </li>
@@ -47,74 +48,119 @@
 
     <br>
     <br>
+    <div class="main-container">
+        <div class="wrapper">
+                <div class="blog-container">
+                    <div class="welcome">
+                        <h1>Advancing Fintech in the Carolinas</h1>
+                
+                        <div th:if="${param.success}">
+                                <h3>Login Successful. Welcome!</h3>
+                                <h3>Got something to say?</h3>
+                    
+                        </div>
+                        <button class="create-post-btn" sec:authorize="isAuthenticated()">
+                            <a th:href="@{/createNewPost}">Create New Post</a>
+                        </button>
+                    </div>
+                    
+                    <main id="posts" class="main-posts">
 
-    <div class="blog-container">
-        <h1>CFH Blog</h1>
 
-        <div th:if="${param.success}">
-            <h3>Login Successful. Welcome!</h3>
+                        <div class="main-blog-wrapper">
+
+                            <div class="blog-card" th:each="post : ${listPosts}">
+                                <div class="blog-additional">
+                                    <div class="blog-color">
+                                        <button class="blog-edit" sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}">
+                                            <a th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
+                                        </button>
+                                        <button class="blog-delete" sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}">
+                                            <a th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
+                                        </button>   
+                                    </div>
+                                    <article class="blog-moreinfo">
+                                        <a th:href="@{/post/{id}(id=${post.id})}">
+                                            <h2 class="title" th:text="${post.title}">Post Title</h2>
+                                        </a>
+                                        <p class="date-auth">
+                                            <i>Posted on </i><span th:text="${post.getDate()}"></span>
+                                        <p th:text="${post.user.firstName + ' ' + post.user.lastName + ' (' + post.user.email + ')'}"></p>
+                                            <br>
+                                        </p>
+                                    </article>
+                                </div>
+                                <div class="blog-general">
+                                    <article>
+                                        <a th:href="@{/post/{id}(id=${post.id})}">
+                                            <h2 class="title" th:text="${post.title}">Post Title</h2>
+                                        </a>
+                                        <p th:text="${post.body}">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus illum rerum reprehenderit neque vero deserunt et, architecto perferendis ipsam ratione iusto, non aspernatur in ipsa maiores autem similique, incidunt obcaecati?</p>
+                                    </article>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="pageNav-container">
+                            <ul class="pageNav">
+                                <li>
+                                    <a th:if="${currentPage > 1}" th:href="@{/page/1}">First</a>
+                                    <span th:unless="${currentPage > 1}">First</span>
+                                </li>
+                                <li>
+                                    <a th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1}}">Previous</a>
+                                    <span th:unless="${currentPage > 1}">Previous</span>
+                                </li>
+                                <li>
+                                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                        <a th:if="${currentPage != i}"
+                                            th:href="@{'/page/' + ${i}}">[[${i}]]</a>
+                                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                                    </span>
+                                </li>
+                                <li>
+                                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
+                                    <span th:unless="${currentPage < totalPages}">Next</span>
+                                </li>
+                                <li>
+                                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
+                                    <span th:unless=" ${currentPage < totalPages}">Last</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </main>
+                </div>
+            
+                <aside class="aside-container">
+                    <div class="recent-posts-container">
+                        <div class="recent-posts">
+                            <h2>Recent Posts</h2>
+                            <!-- might be easier to style as a list? -->
+                        </div>
+                        <div class="article-cards">
+                            <div class="card" th:each="post : ${latest5posts}">
+                                <a class="card-title" th:text="${post.title}" th:href="@{/post/{id}(id=${post.id})}">Post Link</a>
+                                <div class="bar">
+                                    <div class="emptybar"></div>
+                                    <div class="filled bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
 
         </div>
     </div>
+    
 
 
-
-    <main id="posts">
-        <article th:each="post : ${listPosts}">
-            <a th:href="@{/post/{id}(id=${post.id})}">
-                <h2 class="title" th:text="${post.title}">Post Title</h2>
-            </a>
-            <p class="date-auth">
-                <i>Posted on </i><span th:text="${post.getDate()}"></span>
-            <p th:text="${post.user.firstName + ' ' + post.user.lastName + ' (' + post.user.email + ')'}"></p>
-                <br>
-
-            </p>
-            <pre><p class="content" th:text="${post.body}">Post content</p></pre>
-            <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
-            <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
-        </article>
-        <div class="pageNav">
-            <ul>
-                <li>
-                    <a th:if="${currentPage > 1}" th:href="@{/page/1}">First</a>
-                    <span th:unless="${currentPage > 1}">First</span>
-                </li>
-                <li>
-                    <a th:if="${currentPage > 1}" th:href="@{'/page/' + ${currentPage - 1}}">Previous</a>
-                    <span th:unless="${currentPage > 1}">Previous</span>
-                </li>
-                <li>
-                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-                        <a th:if="${currentPage != i}"
-                            th:href="@{'/page/' + ${i}}">[[${i}]]</a>
-                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
-                    </span>
-                </li>
-                <li>
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}}">Next</a>
-                    <span th:unless="${currentPage < totalPages}">Next</span>
-                </li>
-                <li>
-                    <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}}">Last</a>
-                    <span th:unless=" ${currentPage < totalPages}">Last</span>
-                </li>
-            </ul>
-        </div>
-    </main>
-
-    <aside>
-        <h2>Recent Posts</h2>
-        <!-- might be easier to style as a list? -->
-        <a th:each="post : ${latest5posts}" th:text="${post.title}" th:href="@{/post/{id}(id=${post.id})}">Post Link</a>
-    </aside>
-
-    </div>
     <div th:insert="footer :: footer"></div>
-
-
-
-
+    <footer calss=" footer" th:fragment="footer"></footer>
+    
 </body>
+
+
 
 </html>
