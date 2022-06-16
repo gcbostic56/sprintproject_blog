@@ -191,7 +191,7 @@ h1, h2 {
 }
 
 /* Sidebar for 5 recent post */
-body>aside {
+/* body>aside {
     float: right;
     width: 200px;
     background: #CCC;
@@ -214,7 +214,7 @@ body>aside {
     content: '';
     display: block;
     clear: both;
-  }
+  } */
 
 
   /* Footer */
@@ -247,3 +247,70 @@ body>aside {
     text-decoration: none;
     padding: 0px;
   }
+
+  /* posts */
+
+  .wrapper {
+    display: flex;
+    min-width: 95vw;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: row;
+  }
+
+  .main-container {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+  }
+
+  .blog-container {
+    width: 100%;
+            background: gray;
+  }
+  
+  /* aside */
+
+  .aside-container {
+    float: right;
+    height: 100vh;
+    text-align: center;
+            background: pink;
+    width: 380px;
+  }
+
+  /* article cards */
+
+  .card {
+    display: flex;
+    height: 280px;
+    width: 200px;
+            background-color: green;
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #000;
+  }
+
+  /* Pagination */
+
+  .pageNav {
+    list-style: none;
+    cursor: pointer;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    width: 300px;
+    padding: 0px;
+    transition: .75s;
+  }
+
+  .pageNav span:hover{
+    color: var(--Magenta);
+  }
+
+  .pageNav-container {
+    position: relative;
+    justify-content: center;
+  }
+
+
