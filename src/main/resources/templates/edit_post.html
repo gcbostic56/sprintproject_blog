@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CFH Blog</title>
-   
+
     <link rel="stylesheet" type="text/css" href="/css/main.css"/>
 
 </head>
@@ -40,22 +40,23 @@
 <br>
 <br>
 
-    <div class="container">
+    <div class="editpost-container">
         <h1>CFH Blog</h1>
         <h2>Edit Post</h2>
-        <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
+        <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST" style="text-align: center; " width="100%">
             <input type="hidden" th:field="*{id}">
-            <input type="text" th:field="*{title}" required aria-label="title">
+            <input type="text" th:field="*{title}" required aria-label="title" style="width: 70%">
             <br>
-            <textarea style="height: 300px; width: 780px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <br>
+            <textarea style="height: 300px; width: 90%; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
             <br>
             <!-- <input type="text" th:field="*{body}" required aria-label="body"> -->
-            <button type="submit" class="btn btn-info col-2">Save Post</button>
+            <button type="submit" class="edit-submit-btn">Save Post</button>
         </form>
     </div>
 
 
     
-    <footer class=" footer" th:fragment="footer"></footer>
+    <div th:insert="footer :: footer"></div>
 </body>
 </html>

@@ -19,7 +19,7 @@
                 </a>
                 <ul class="nav-navbar-nav">
                     <li class="create-post-btn" sec:authorize="isAuthenticated()">
-                        <a th:href="@{/createNewPost}">Create New Post</a>
+                        <a th:href="@{/createNewPost}">New Post</a>
                     </li>
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/registration}">Register</a>

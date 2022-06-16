@@ -51,6 +51,8 @@ body {
     align-items: center;
 }
 
+
+.create-post-btn,
 .logout-btn,
 .login-btn {
     width: 80px;
@@ -63,6 +65,7 @@ body {
     outline: none;
     border-radius: 5px;
     transition: 0.25s;
+    margin: 5px;
 }
 
 .register-btn,
@@ -79,6 +82,7 @@ body {
     transition: 0.25s;
 }
 
+.create-post-btn:hover,
 .logout-btn:hover,
 .login-btn:hover,
 .register-btn:hover,
@@ -140,6 +144,8 @@ body {
     border-color: var(--Yellow);
 }
 
+.create-newpost-btn[type="submit"],
+.edit-submit-btn[type="submit"],
 .login input[type = "submit"],
 .login button[type = "submit"] {
     border: none;
@@ -247,3 +253,48 @@ body>aside {
     text-decoration: none;
     padding: 0px;
   }
+
+  #userIcon{
+    width: 5%; 
+  }
+
+  /* UserTable Container */
+.editpost-container,
+.newpost-container,
+.user_container_table{
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 20px 5px rgb(207 46 46 / 20%);
+    padding: 30px 20px;
+    width: 100%;
+    position: relative;
+    transition: all .15s ease-out;
+}
+
+
+ /* UserTable */
+ .usertable{
+width: 40%;
+font-family: var(--IBM400);
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+ }
+
+.usertable tr:hover{
+    border-color: var(--Magenta);
+    background: var(--Magenta);
+    cursor: pointer;
+    color: white;
+}
+
+.userIcon{
+    max-width: 5%;
+    max-height: auto;
+}
+
+
+textarea{
+    resize: none;
+    font-family: var(--IBM400);
+}

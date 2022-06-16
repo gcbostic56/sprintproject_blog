@@ -10,17 +10,21 @@
 </head>
 <body>
     <header th:insert="index :: header" class="navbar" ></header>
-
-    <div class="container">
+    
+    <br>
+    <br>
+    
+    <div class="newpost-container">
         <h1>CFH Blog</h1>
         <h2>Create New Post</h2>
 
-        <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
-            <input type="text" th:field="*{title}" placeholder="Post Title" required aria-label="post title input">
+        <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST"style="text-align: center; " width="100%">
+            <input type="text" th:field="*{title}" placeholder="Post Title" required aria-label="post title input" style="width: 70%">
             <br>
-            <textarea style="height: 300px; width: 780px; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
             <br>
-            <button type="submit">Save Post</button>
+            <textarea style="height: 300px; width: 90%; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <br>
+            <button class="create-newpost-btn" type="submit">Save Post</button>
         </form>
     </div>
 
