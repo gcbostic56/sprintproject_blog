@@ -67,10 +67,10 @@
                             <div class="blog-card" th:each="post : ${listPosts}">
                                 <div class="blog-additional">
                                     <div class="blog-color">
-                                        <button class="blog-edit" sec:authorize="isAuthenticated()">
+                                        <button class="blog-edit" sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}">
                                             <a th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
                                         </button>
-                                        <button class="blog-delete" sec:authorize="isAuthenticated()">
+                                        <button class="blog-delete" sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}">
                                             <a th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
                                         </button>   
                                     </div>
