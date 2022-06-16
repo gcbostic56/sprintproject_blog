@@ -18,9 +18,9 @@
                 </a>
                 <ul class="nav-navbar-nav">
 
-                    <li class="create-post-btn" sec:authorize="isAuthenticated()">
-                        <a th:href="@{/createNewPost}">New Post</a>
-                    </li>
+<!--                    <li class="create-post-btn" sec:authorize="isAuthenticated()">-->
+<!--                        <a th:href="@{/createNewPost}">New Post</a>-->
+<!--                    </li>-->
 
                     <li class="register-btn" sec:authorize="!isAuthenticated()">
                         <a th:href="@{/registration}">Register</a>
@@ -85,7 +85,7 @@
                                         </a>
                                         <p class="date-auth">
                                             <i>Posted on </i><span th:text="${post.getDate()}"></span>
-                                        <p th:text="${post.user.firstName + ' ' + post.user.lastName + ' (' + post.user.email + ')'}"></p>
+                                        <p th:text="${'By: ' + post.user.firstName + ' ' + post.user.lastName}"></p>
                                             <br>
                                         </p>
                                     </article>

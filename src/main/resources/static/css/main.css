@@ -57,7 +57,7 @@ a {
 
 
 
-.create-post-btn,
+
 .logout-btn,
 .login-btn {
     width: 80px;
@@ -67,6 +67,43 @@ a {
     color: white;
     text-align: center;
 }
+/*.blog-edit,*/
+/*.blog-delete {*/
+/*    text-transform: uppercase;*/
+/*    font-size: 1rem;*/
+/*    font-weight: 400;*/
+/*    padding: 14px;*/
+/*    border-radius: 5px;*/
+/*    white-space: nowrap;*/
+/*    width: 100px;*/
+/*    text-align: center;*/
+/*    outline: none;*/
+/*}*/
+
+/*.blog-delete {*/
+/*    background: var(--Magenta);*/
+/*    margin-top: 10px;*/
+/*    transition: 0.25s;*/
+/*    margin: 5px;*/
+/*}*/
+
+/*.blog-delete:hover {*/
+/*    background: var(--Orange);*/
+/*    color: white;*/
+/*}*/
+
+/*.blog-edit {*/
+/*    background: white;*/
+/*    transition: 0.25s;*/
+/*}*/
+
+
+/*.create-post-btn:hover,*/
+/*.blog-edit:hover {*/
+/*    color: white;*/
+/*    background: var(--Orange);*/
+/*}*/
+
 .blog-edit,
 .blog-delete {
     text-transform: uppercase;
@@ -84,7 +121,6 @@ a {
     background: var(--Magenta);
     margin-top: 10px;
     transition: 0.25s;
-    margin: 5px;
 }
 
 .blog-delete:hover {
@@ -97,8 +133,6 @@ a {
     transition: 0.25s;
 }
 
-
-.create-post-btn:hover,
 .blog-edit:hover {
     color: white;
     background: var(--Orange);
@@ -421,9 +455,9 @@ h2 {
     padding: 0px;
   }
 
-  #userIcon{
-    width: 5%; 
-  }
+  /*#userIcon{*/
+  /*  width: 5%; */
+  /*}*/
 
   /* UserTable Container */
 .deletepost-container,
@@ -473,7 +507,7 @@ textarea{
     text-align: center;
 }
 
-=======
+
 .blog-card .blog-additional .blog-color {
   width: 150px;
   height: 100%;

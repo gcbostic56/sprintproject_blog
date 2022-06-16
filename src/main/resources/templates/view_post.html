@@ -13,7 +13,7 @@
 
 <body>
 <!-- insert navbar -->
-
+<header th:insert="index :: header" class="navbar" ></header>
     <main>
         <article th:object="${post}">
             <h2 class="title" th:text="${post.title}">Post Title</h2>
