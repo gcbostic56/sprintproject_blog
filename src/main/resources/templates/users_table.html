@@ -10,9 +10,9 @@
 </head>
 <body>
     <header th:insert="index :: header" class="navbar" ></header>
-    <div align="center" class="container my-2">
-        <h1>User List</h1>
-            <table border="1" class = "table table-striped table-responsive-md" >
+    <div class="user_container_table">
+        <h1 class="Userlist">User List</h1>
+            <table class = "usertable">
                 <thead>
                 <tr>
                     <th>Username</th>
@@ -20,7 +20,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="userTable" th:each="user : ${allUsers}">
+                <tr  class="userTable" th:each="user : ${allUsers}">
                 <td th:text="${user.getEmail()}"></td>
                 <td th:text="${user.getFullName()}"></td>
             </tbody>

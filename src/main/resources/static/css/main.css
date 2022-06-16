@@ -55,6 +55,18 @@ a {
   align-items: center;
 }
 
+
+
+.create-post-btn,
+.logout-btn,
+.login-btn {
+    width: 80px;
+    text-decoration: none;
+    border: 3px solid var(--Maroon);
+    background: var(--Maroon);
+    color: white;
+    text-align: center;
+}
 .blog-edit,
 .blog-delete {
     text-transform: uppercase;
@@ -72,6 +84,7 @@ a {
     background: var(--Magenta);
     margin-top: 10px;
     transition: 0.25s;
+    margin: 5px;
 }
 
 .blog-delete:hover {
@@ -84,6 +97,8 @@ a {
     transition: 0.25s;
 }
 
+
+.create-post-btn:hover,
 .blog-edit:hover {
     color: white;
     background: var(--Orange);
@@ -137,6 +152,7 @@ a {
   border-radius: 5px;
   transition: 0.25s;
 }
+
 
 .logout-btn:hover,
 .login-btn:hover,
@@ -204,6 +220,22 @@ a {
   border-color: var(--Yellow);
 }
 
+
+.create-newpost-btn[type="submit"],
+.edit-submit-btn[type="submit"],
+.login input[type = "submit"],
+.login button[type = "submit"] {
+    border: none;
+    background: var(--Maroon);
+    color: white;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 40px;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.25s;
+}
 .login input[type="submit"],
 .login button[type="submit"],
 .create-post-btn {
@@ -217,6 +249,7 @@ a {
   outline: none;
   border-radius: 5px;
   transition: 0.25s;
+
 }
 
 .login input[type="submit"]:hover,
@@ -376,6 +409,71 @@ h2 {
     -webkit-transform: translate(-50%, -50%);
 }
 
+
+  .socials {
+    margin: 0 auto;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    list-style: none;
+    text-decoration: none;
+    padding: 0px;
+  }
+
+  #userIcon{
+    width: 5%; 
+  }
+
+  /* UserTable Container */
+.deletepost-container,
+.editpost-container,
+.newpost-container,
+.user_container_table{
+    background: #fff;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 20px 5px rgb(207 46 46 / 20%);
+    padding: 30px 20px;
+    width: 100%;
+    position: relative;
+    transition: all .15s ease-out;
+}
+
+
+ /* UserTable */
+ .usertable{
+width: 40%;
+font-family: var(--IBM400);
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+ }
+
+.usertable tr:hover{
+    border-color: var(--Magenta);
+    background: var(--Magenta);
+    cursor: pointer;
+    color: white;
+}
+
+.userIcon{
+    max-width: 5%;
+    max-height: auto;
+}
+
+
+textarea{
+    resize: none;
+    font-family: var(--IBM400);
+}
+
+
+/*Delete Post page*/
+.deletepost-container{
+    text-align: center;
+}
+
+=======
 .blog-card .blog-additional .blog-color {
   width: 150px;
   height: 100%;
@@ -586,3 +684,4 @@ h2 {
   position: relative;
   justify-content: center;
 }
+
