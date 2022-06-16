@@ -5,7 +5,6 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-import com.sun.istack.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
