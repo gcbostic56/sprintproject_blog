@@ -85,7 +85,7 @@ public class MainController {
     @PostMapping("/savePost") 
     public String savePost(@ModelAttribute("post") Post post) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        var details = (UserDetails) principal;
+        UserDetails details = (UserDetails) principal;
         User user = userRepository.findByEmail(details.getUsername());
         post.setUser(user);
         postService.savePost(post);
