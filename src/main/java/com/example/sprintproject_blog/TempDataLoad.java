@@ -1,7 +1,5 @@
 package com.example.sprintproject_blog;
 
-import com.example.sprintproject_blog.model.Post;
-import com.example.sprintproject_blog.model.User;
 import com.example.sprintproject_blog.repository.PostRepository;
 import com.example.sprintproject_blog.repository.UserRepository;
 import com.example.sprintproject_blog.service.UserService;

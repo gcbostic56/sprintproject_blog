@@ -1,7 +1,6 @@
 package com.example.sprintproject_blog.web;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.example.sprintproject_blog.model.User;
 import com.example.sprintproject_blog.repository.UserRepository;
