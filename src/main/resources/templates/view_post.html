@@ -7,6 +7,7 @@
     <title>CFH Blog</title>
 
     <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="icon" type="image/x-icon" href="/images/CFH_favicon.ico">
 
 </head>
 
@@ -22,8 +23,8 @@
                 <!-- <i>By </i><span th:text="${post.user.getFullName}"></span> -->
             </p>
             <pre><p class="content" th:text="${post.body}">Post content</p></pre>
-            <a sec:authorize="isAuthenticated()" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
-            <a sec:authorize="isAuthenticated()" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
+            <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
+            <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
         </article>
     </main>
 
