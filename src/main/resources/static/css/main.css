@@ -299,3 +299,10 @@ textarea{
     resize: none;
     font-family: var(--IBM400);
 }
+
+
+/*Delete Post page*/
+.deletepost-container{
+    text-align: center;
+}
+
