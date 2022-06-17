@@ -46,10 +46,10 @@
         <h2>Edit Post</h2>
         <form action="#" th:action="@{/savePost}" th:object="${post}" method="POST" style="text-align: center; " width="100%">
             <input type="hidden" th:field="*{id}">
-            <input type="text" th:field="*{title}" required aria-label="title" style="width: 70%">
+            <textarea type="text" class="title-textarea" th:field="*{title}" required aria-label="title" style="width: 70%"></textarea>
             <br>
             <br>
-            <textarea style="height: 300px; width: 90%; white-space: pre-wrap;" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
+            <textarea class="edit-textarea" type="text" th:field="*{body}" placeholder="Body Text" required aria-label="post body input"></textarea>
             <br>
             <!-- <input type="text" th:field="*{body}" required aria-label="body"> -->
 
