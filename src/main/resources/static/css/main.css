@@ -285,7 +285,7 @@ a {
   transition: 0.25s;
 
 }
-
+.edit-submit-btn[type="submit"]:hover,
 .login input[type="submit"]:hover,
 .login button[type="submit"]:hover,
 .create-post-btn:hover {
