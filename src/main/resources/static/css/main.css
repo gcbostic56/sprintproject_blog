@@ -21,8 +21,14 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-a {
+/* clearing blue links */
+
+a:link,
+a:visited,
+a:hover,
+a:active {
     text-decoration: none;
+    color: var(--Maroon);
 }
 
 .navbar {
@@ -274,7 +280,7 @@ a {
 .login button[type="submit"],
 .create-post-btn {
   border: none;
-  background: var(--Maroon);
+  background: var(--Magenta);
   color: white;
   display: block;
   margin: 20px auto;
@@ -288,8 +294,9 @@ a {
 
 .login input[type="submit"]:hover,
 .login button[type="submit"]:hover,
+.edit-submit-btn[type="submit"]:hover,
 .create-post-btn:hover {
-  background: var(--Magenta);
+  background: var(--Orange);
   cursor: pointer;
 }
 
@@ -656,9 +663,14 @@ textarea{
 .card-title {
   color: var(--Maroon);
   font-weight: 400;
+  font-size: 20px;
   position: absolute;
   transform: translateY(-50px);
   text-align: center;
+}
+
+.card-title:hover {
+    color: var(--Magenta);
 }
 
 .bar {
@@ -710,7 +722,8 @@ textarea{
   transition: 0.75s;
 }
 
-.pageNav span:hover {
+.pageNav span:hover,
+.pageNav a:hover {
   color: var(--Magenta);
 }
 
@@ -719,3 +732,44 @@ textarea{
   justify-content: center;
 }
 
+/* Edit Post */
+
+.edit-textarea,
+.title-textarea {
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid var(--Magenta);
+    color: var(--Maroon)
+}
+
+.edit-textarea {
+    height: 300px;
+    width: 90%;
+    white-space: pre-wrap;
+}
+
+/* view post */
+
+.view-wrapper {
+    width: 100%;
+    margin: 100px 0;
+}
+
+.view-container {
+    text-align: center;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.view-buttons {
+    width: 205px;
+}
+
+/* delete post */
+
+.delete-notice {
+    color: var(--Orange);
+}
