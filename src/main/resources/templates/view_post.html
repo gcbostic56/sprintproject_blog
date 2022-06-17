@@ -26,11 +26,11 @@
         </article>
         <div class="button-container">
             <div class="view-buttons">
-                <button class="blog-edit">
-                    <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
+                <button class="blog-edit" sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}">
+                    <a th:href="@{/edit/{id}(id=${post.id})}">Edit</a>
                 </button>
-                <button class="blog-delete">
-                    <a sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}" th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
+                <button class="blog-delete" sec:authorize="isAuthenticated()" th:if="${#authentication.name} == ${post.user.email}">
+                    <a th:href="@{/delete/{id}(id=${post.id})}">Delete</a>
                 </button>
             </div>
         </div>
