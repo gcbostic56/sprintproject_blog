@@ -291,6 +291,8 @@ a:active {
   transition: 0.25s;
 
 }
+
+.create-newpost-btn[type="submit"]:hover,
 .edit-submit-btn[type="submit"]:hover,
 .login input[type="submit"]:hover,
 .login button[type="submit"]:hover,
